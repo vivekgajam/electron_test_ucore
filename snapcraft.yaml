@@ -23,11 +23,6 @@ apps:
     - pulseaudio
     - wayland
     - x11-plug
-
-architectures:
-  - build-on: amd64
-    run-on: armhf
-
 plugs:
   browser-sandbox:
     interface: browser-support
