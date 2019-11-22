@@ -1,4 +1,4 @@
-name: electron-hello-world-kiosk
+name: electron-hw-kiosk
 version: '0.2'
 summary: Hello World Electron app for a Kiosk
 description: |
