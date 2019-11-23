@@ -11,7 +11,7 @@ apps:
   electron-hw-kiosk:
     daemon: simple
     restart-condition: always
-    command: desktop-launch xwayland-kiosk-launch "$SNAP/electron-helloworld/electron-quick-start" "--no-sandbox"
+    command: desktop-launch xwayland-kiosk-launch "/snap/electron-wokiosk/x1" "--no-sandbox"
     environment:
       XWAYLAND_FULLSCREEN_WINDOW_HINT: window_role="browser-window"
     slots: [ x11 ]
