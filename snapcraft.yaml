@@ -11,7 +11,7 @@ apps:
   electron-hw-kiosk:
     daemon: simple
     restart-condition: always
-    command: desktop-launch xwayland-kiosk-launch "/snap/electron-hw-kiosk/x1" "--no-sandbox"
+    command: desktop-launch xwayland-kiosk-launch "$SNAP/snap/electron-hw-kiosk/x1" "--no-sandbox"
     environment:
       XWAYLAND_FULLSCREEN_WINDOW_HINT: window_role="browser-window"
     slots: [ x11 ]
@@ -35,6 +35,10 @@ parts:
     plugin: nodejs
     source: https://github.com/electron/electron-quick-start.git
     after: [desktop-gtk3, xwayland-kiosk-helper]
+    override-build: |
+        npm install electron-packager &&
+        ./node_modules/.bin/electron-packager . --overwrite --platform=linux --arch=$ARCH --output=release-build --prune=true
+        cp -v -R ./electron-quick-start-linux-$ARCH $SNAPCRAFT_PART_INSTALL/electron-helloworld
     stage-packages:
     - libasound2
     - libgconf-2-4
